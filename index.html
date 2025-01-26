@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      background-color: #121212;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+    }
+    .progress-bar {
+      width: 100%;
+      background-color: #333;
+      position: relative;
+    }
+    .progress {
+      width: 1%;
+      height: 30px;
+      background-color: #4caf50;
+      text-align: center;
+      line-height: 30px;
+      color: #ffffff;
+    }
+    .percentage {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="progress-bar">
+  <div class="progress" id="yearProgress"></div>
+  <div class="percentage" id="yearPercentage"></div>
+</div>
+
+<script>
+  function calculateYearProgress() {
+    const now = new Date();
+    const start = new Date(now.getFullYear(), 0, 1);
+    const end = new Date(now.getFullYear() + 1, 0, 1);
+    const progress = ((now - start) / (end - start)) * 100;
+    document.getElementById('yearProgress').style.width = progress + '%';
+    document.getElementById('yearProgress').innerText = progress.toFixed(2) + '%';
+    document.getElementById('yearPercentage').innerText = progress.toFixed(2) + '%';
+  }
+
+  calculateYearProgress();
+</script>
+
+</body>
+</html>
